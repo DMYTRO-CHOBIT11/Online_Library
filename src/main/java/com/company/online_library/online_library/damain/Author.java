@@ -21,7 +21,7 @@ public class Author {
 
     private Date birthday;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "author_book",
             joinColumns =@JoinColumn(name = "author_id"),
             inverseJoinColumns =@JoinColumn(name = "book_id"))

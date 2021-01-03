@@ -60,14 +60,14 @@
     <label>ISBN:</label>
     <div th:text="${selectedBook.isbn}"></div>
     <label>Опис:</label>
-    <div th:text="${selectedBook.descr}"></div>
+    <div id="descr" th:text="${selectedBook.descr}"></div>
     </div>
     <div id="contentPosition">
     <div><a th:href="@{'/pdf/'+${selectedBook.content}}"/>
-        <button class="btn"><i class="fa fa-download"></i> Читати</button>
+        <button id="linkd" class="btn"><i class="fa fa-download"></i> Читати</button>
     </div>
     <div><a th:href="@{'/pdf/'+${selectedBook.content}}" download="">
-        <button class="btn"><i class="fa fa-download"></i> Скачати</button>
+        <button id="linkd" class="btn"><i class="fa fa-download"></i> Скачати</button>
     </a></div>
     </div>
     </div>

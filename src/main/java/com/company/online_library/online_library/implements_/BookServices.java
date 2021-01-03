@@ -26,7 +26,6 @@ public class BookServices implements IBookServices {
         this.repository = repository;
     }
 
-//    @Async(value = "taskExecutor")
     @Override
     public Book createBook(Book book) {
         Book newBook=new Book();
@@ -103,13 +102,6 @@ public class BookServices implements IBookServices {
         Pageable pageable = PageRequest.of(pageNo-1,pageSize,sort);
         return repository.findAll(pageable);
     }
-//    @Override
-//    public Page<Book> findAll(Pageable pageable) {
-//        Integer pageNo= pageable.getPageNumber();
-//        Integer pageSize=pageable.getPageSize();
-//        pageable= PageRequest.of(pageNo-1,pageSize);
-//        return repository.findAll(pageable);
-//    }
 
     @Override
     public int countBooksByGenreId(Long id) {

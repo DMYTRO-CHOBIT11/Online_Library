@@ -22,15 +22,14 @@ public class Publisher {
     @NotBlank(message = "Введіть назву видавництва")
     private String name;
 
-    @OneToMany(mappedBy = "publisher",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH},
-            orphanRemoval = true)
+    @OneToMany(mappedBy = "publisher")
     private Set<Book> books=new HashSet<>();
 
-    public void removePublisherFromBooks(){
-        for (Book b:books) {
-            b.removePublisher(this);
-        }
-    }
+//    public void removePublisherFromBooks(Set<Book>books){
+//        for (Book b:books) {
+//            b.removePublisher(this);
+//        }
+//    }
 
     @Override
     public String toString() {

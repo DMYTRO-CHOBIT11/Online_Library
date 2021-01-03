@@ -29,16 +29,15 @@ public class Book {
 
     private String content;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH})
+    @ManyToOne
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
     @NotNull(message = "Вкажіть автора книги")
-    @ManyToMany(mappedBy = "bookList",cascade = {CascadeType.PERSIST,CascadeType.MERGE,
-            CascadeType.DETACH})
+    @ManyToMany(mappedBy = "bookList")
     private Set<Author> author=new HashSet<>();
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH})
+    @ManyToOne
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
@@ -63,13 +62,13 @@ public class Book {
         }
     }
 
-    public void removeGenre(Genre genre){
-        genre.getBooks().remove(this);
-    }
-
-    public void removePublisher(Publisher publisher){
-        publisher.getBooks().remove(this);
-    }
+//    public void removeGenre(Genre genre){
+//        genre.getBooks().remove(this);
+//    }
+//
+//    public void removePublisher(Publisher publisher){
+//        publisher.getBooks().remove(this);
+//    }
 
     public Book(@NotBlank(message = "Введіть назву книги") String name, int isbn, Genre genre, @NotNull(message = "Вкажіть автора книги") Set<Author> author, Publisher publisher, int publishYear, String descr) {
         this.name = name;

@@ -118,7 +118,7 @@ public class BookController {
     @GetMapping("/home/genre={id}/page={pageNo}")
     public String allBooksByGenre(@PathVariable("id") long id,@PathVariable("pageNo") int pageNo,
                                   @RequestParam(value = "sortField",defaultValue = "name")String sortField, Model model){
-        int pageSize=3;
+        int pageSize=18;
         Page<Book>pages=services.findAllByGenre(pageNo,pageSize,id,sortField);
         List<Book> booksBygenre=pages.getContent();
         model.addAttribute("currentPage1", pageNo);

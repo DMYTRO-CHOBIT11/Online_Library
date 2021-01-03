@@ -5,7 +5,6 @@ import com.company.online_library.online_library.interfaces.IAuthorServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,8 +34,11 @@ public class AuthorController {
 
     @PostMapping("/admin/editAuthorById={id}")
     public String update(@PathVariable("id") long id,@Valid Author author,BindingResult bindingResult) {
-        if (author.getFio()==null){
-            bindingResult.addError(new FieldError("editAuthor","fio","Заповніть усі форми"));
+//        if (author.getFio()==null){
+//            bindingResult.addError(new FieldError("editAuthor","fio","Заповніть усі форми"));
+//        }
+        if(bindingResult.hasErrors()){
+            return "edit";
         }
         services.updateAuthorById(author,id);
         return "redirect:/admin/listAuthors";

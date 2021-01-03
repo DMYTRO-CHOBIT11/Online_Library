@@ -37,8 +37,8 @@
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
         <ul>Сортувати за:
-            <li ><a th:href="@{'/home/page='+${currentPage}+'?sortedField=name'}" class="sortParam">Назвою</a></li>
-            <li ><a th:href="@{'/home/page='+${currentPage}+'?sortedField=author.fio'}" class="sortParam">Автором</a></li>
+            <li><a th:href="@{'/home/page='+${currentPage}+'?sortedField=name'}" class="sortParam">Назвою</a></li>
+            <li><a th:href="@{'/home/page='+${currentPage}+'?sortedField=author.fio'}" class="sortParam">Автором</a></li>
         </ul>
     </div>
     <div class="container1" id="g">
@@ -60,6 +60,7 @@
             <div><img th:src="@{'/image/'+${b.image}}" height="175" width="125"/></div>
                 <strong><div id="bookName" th:text="${b.name}" ></div></strong>
             </a>
+                <div id="author" th:each="a:${b.author}" th:text="${a.fio}" ></div>
                 <div class="iconPosition">
                     <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
                     <a th:href="@{'/admin/deleteBookById='+${b.book_id}}"><img class="icoN" th:src="@{/image/delete.png}" width="15" height="20"></a>

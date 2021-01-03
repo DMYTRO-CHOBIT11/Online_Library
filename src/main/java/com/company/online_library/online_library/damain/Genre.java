@@ -20,16 +20,15 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotBlank(message = "Введіть назву жанру")
-    @Column(unique = true)
     private String name;
-    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH},orphanRemoval = true)
+    @OneToMany
     private Set<Book> books=new HashSet<>();
 
-    public void removeGenreFromBooks(){
-        for (Book b:books) {
-            b.removeGenre(this);
-        }
-    }
+//    public void removeGenreFromBooks(Set<Book> books){
+//        for (Book b:books) {
+//            b.removeGenre(this);
+//        }
+//    }
     @Override
     public String toString() {
         return name;

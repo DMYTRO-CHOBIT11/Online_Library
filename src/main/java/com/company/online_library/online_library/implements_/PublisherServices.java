@@ -26,7 +26,7 @@ public class PublisherServices implements IPublisherServices {
     @Override
     public void deletePublisherById(long id) {
         Publisher publisher=findById(id).get();
-        publisher.removePublisherFromBooks();
+//        publisher.removePublisherFromBooks(publisher.getBooks());
         repository.delete(publisher);
     }
 

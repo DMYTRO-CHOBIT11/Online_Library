@@ -37,7 +37,7 @@ public class GenreSrvices implements IGenreServices {
     @Override
     public void deleteGenreById(long id) {
         Genre genre=repository.findById(id).get();
-        genre.removeGenreFromBooks();
+//        genre.removeGenreFromBooks(genre.getBooks());
         repository.delete(genre);
     }
 
