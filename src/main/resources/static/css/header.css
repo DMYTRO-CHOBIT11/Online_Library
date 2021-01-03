@@ -1,0 +1,265 @@
+span.multiselect-native-select {
+    position: relative
+}
+span.multiselect-native-select select {
+    border: 0!important;
+    clip: rect(0 0 0 0)!important;
+    height: 1px!important;
+    margin: -1px -1px -1px -3px!important;
+    overflow: hidden!important;
+    padding: 0!important;
+    position: absolute!important;
+    width: 1px!important;
+    left: 50%;
+    top: 30px
+}
+.multiselect-container {
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+.multiselect-container .input-group {
+    margin: 5px
+}
+.multiselect-container>li {
+    padding: 0
+}
+.multiselect-container>li>a.multiselect-all label {
+    font-weight: 700
+}
+.multiselect-container>li.multiselect-group label {
+    margin: 0;
+    padding: 3px 20px 3px 20px;
+    height: 100%;
+    font-weight: 700
+}
+.multiselect-container>li.multiselect-group-clickable label {
+    cursor: pointer
+}
+.multiselect-container>li>a {
+    padding: 0
+}
+.multiselect-container>li>a>label {
+    margin: 0;
+    height: 100%;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 3px 0 3px 30px
+}
+.multiselect-container>li>a>label.radio, .multiselect-container>li>a>label.checkbox {
+    margin: 0
+}
+.multiselect-container>li>a>label>input[type=checkbox] {
+    margin-bottom: 5px
+}
+.btn-group>.btn-group:nth-child(2)>.multiselect.btn {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px
+}
+.form-inline .multiselect-container label.checkbox, .form-inline .multiselect-container label.radio {
+    padding: 3px 20px 3px 40px
+}
+.form-inline .multiselect-container li a label.checkbox input[type=checkbox], .form-inline .multiselect-container li a label.radio input[type=radio] {
+    margin-left: -20px;
+    margin-right: 0
+}
+*{
+    margin: 0;
+}
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+#reg{
+    float: right;
+}
+#log_in{
+    float: right;
+}
+#addBook{
+    float: left;
+}
+#ob{
+    text-align: center;
+    color: #ffc107;
+}
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add an active class to highlight the current page */
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+.topnav a.active:hover{
+    background-color: wheat;
+    color: sienna;
+}
+.outputBookss{
+    margin-left: 36px;
+    padding-top: 20px;
+    display: inline-block;
+}
+.bookK{
+    width: 125px;
+    height: 270px;
+    background: #ffffff;
+}
+li{
+    list-style-type: none;
+}
+
+#bookPage{
+    margin-left: 265px;
+    background: #919191;
+    width: 1025px;
+    height: 900px;
+}
+.bookLinq{
+    color: #050509;
+}
+.page№{
+    display: inline-block;
+}
+
+.p{
+    border: 4px #123856; /* Параметры границы */
+    background: #cdcfce; /* Цвет фона */
+    width: 200px;
+    margin-left: 650px;
+    margin-top: 300px;
+}
+#currntPage{
+    background-color: #bcb8b8;
+    color: #050509;
+}
+#pos{
+    margin-left: 650px;
+    margin-top: 50px;
+}
+.invalid-feedback{
+    font-size: 12px;
+    text-align: left;
+    font-weight: 600;
+}
+#pass{
+    margin-top: -21px;
+}
+#possition{
+    margin-top: 60px;
+}
+
+#login-row{
+    margin-top: -80px;
+}
+#linkcolor{
+    color: #fffdfd;
+}
+#name{
+    width: 300px;
+}
+#isbn{
+    width: 150px;
+}
+#dataPublish{
+    width: 200px;
+}
+#descr{
+    width: 300px;
+}
+
+#bPossition{
+    margin-top: 5px;
+    margin-left: 570px;
+}
+#bPossition button{
+    display: inline;
+}
+.iconPosition{
+    margin-top: 40px;
+    background: #bab9b9;
+    width: 125px;
+    height: 28px;
+    padding: 5px;
+}
+.icoN{
+    margin-right: 7px;
+    float: right;
+}
+#bookName{
+    padding-left: 7px;
+    padding-top: 5px;
+}
+.selectBook{
+    text-align: center;
+    margin-top: -400px;
+}
+#bookView{
+    text-align: center;
+    margin-top: 0px;
+    margin-left: 315px;
+    background: #cfcdcd;
+    height:530px;
+    width: 950px;
+}
+#zagolovok{
+    text-align: center;
+    background: #969595;
+    margin-left: 315px;
+    margin-top: -553px;
+    height: 44px;
+    width: 950px;
+}
+#bookIcon{
+    margin-right: 250px;
+    margin-top:25px ;
+    width: 250px;
+    height: 350px;
+}
+#infoPosition{
+    margin-left: 450px;
+    margin-top: -325px;
+    font-size: 18px;
+}
+#contentPosition{
+    margin-top: -10px;
+    margin-left: 100px;
+}
+#contentPosition div{
+    display: inline-block;
+    margin-right: 30px;
+}
+.outputBookss #contentPosition{
+    margin-left: -219px;
+}
+.sort{
+    padding-left: 10px;
+}
+.author{
+    padding-right: 20px;
+}
+
+.positionAuthor{
+    padding-top: 5px;
+}
+.textAuthor{
+    padding-left: 5px;
+    font-size: 12px;
+}
+.sortParam{
+    padding-left: 10px;
+}

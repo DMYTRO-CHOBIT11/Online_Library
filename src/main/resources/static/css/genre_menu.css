@@ -1,0 +1,116 @@
+/*html, body{*/
+/*    padding:0px;*/
+/*    margin:0px;*/
+/*    font-family: 'Raleway', sans-serif;*/
+/*    height:100%;*/
+/*}*/
+
+#myBody{
+    background: #6b6969;
+}
+.container1{
+    margin-top: 30px;
+    color: #dddddd;
+    text-align: center;
+    max-width:200px;
+    background:#333;
+    padding:10px 0px 20px 0px;
+    border:1px solid #111;
+    border-radius:4px;
+    box-shadow:0px 4px 5px rgba(0, 0, 0, 0.75);
+    margin-left: 30px;
+}
+
+.search{
+    margin-left: 30px;
+}
+.link1{
+    font-size:16px;
+    font-weight:300;
+    text-align:center;
+    position:relative;
+    height:40px;
+    line-height:40px;
+    margin-top:10px;
+    overflow:hidden;
+    width:90%;
+    margin-left:5%;
+    cursor:pointer;
+}
+.link1:after{
+    content: '';
+    position:absolute;
+    width:80%;
+    border-bottom:1px solid rgba(255, 255, 255, 0.5);
+    bottom:50%;
+    left:-100%;
+    transition-delay: all 0.5s;
+    transition: all 0.5s;
+}
+.link1:hover:after,
+.link1.hover:after{
+    left:100%;
+}
+.link1 .text1{
+    text-shadow:0px -40px 0px rgba(255, 255, 255, 1);
+    transition:all 0.75s;
+    transform:translateY(100%) translateZ(0);
+    transition-delay:all 0.25s;
+}
+.link1:hover .text1,
+.link1.hover .text1{
+    text-shadow:0px -40px 0px rgba(255, 255, 255, 0);
+    transform:translateY(0%) translateZ(0) scale(1.1);
+    font-weight:600;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Style the search field */
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 160px;
+    background: #f1f1f1;
+    margin-top: 20px;
+}
+
+/* Style the submit button */
+form.example button {
+    float: left;
+    width: 50px;
+    padding: 10px;
+    background: #050509;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+form.example button:hover {
+    background: #909294;
+}
+
+/* Clear floats */
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+#countBook{
+    background: #726f6f;
+    margin-left: 265px;
+    margin-top: -250px;
+    height: 44px;
+    width: 1025px;
+}
+#c{
+    padding-left: 15px;
+    padding-top: 10px;
+}

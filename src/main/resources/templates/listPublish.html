@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Довідник</title>
+</head>
+<body>
+<header>
+    <div class="topnav">
+        <a th:href="@{/home/page=1}" class="active">На головну</a>
+        <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
+            <a th:href="@{/admin/addBook}" id="addBook">Додати книгу</a>
+            <a th:href="@{/admin/listAuthors}" id="addBook">Довідник</a>
+        </div>
+        <div sec:authorize="!isFullyAuthenticated()">
+            <a th:href="@{/reg}" id="reg">Реєстрація</a>
+            <a th:href="@{/login}" id="log_in">Увійти</a>
+        </div>
+        <div sec:authorize="isFullyAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+                <a th:href="@{/logout}" id="log_in">Вийти</a>
+            </form>
+        </div>
+        <h3 id="ob">Онлайн бібліотека</h3>
+    </div>
+</header>
+<div class="main">
+<div id="bPossition">
+    <button type="button" class="btn btn-info add-new"><a id="linkcolor" th:href="@{/admin/listAuthors}">Автори</a></button>
+    <button type="button" class="btn btn-info add-new"><a id="linkcolor" th:href="@{/admin/listBook}">Книги</a></button>
+    <button type="button" class="btn btn-info add-new"><a id="linkcolor" th:href="@{/admin/listGenres}">Жанри</a></button>
+</div>
+<div class="container" id="possition">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8"><h2>Список <b>жанрів</b></h2></div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-info add-new"><a id="linkcolor" th:href="@{/admin/addPublisher}" class="fa fa-plus">Додати видавництво</a></button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Видавництво</th>
+                <th>Дія</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="publisher : ${publishers}">
+                <td th:text="${publisher.id}"></td>
+                <td th:text="${publisher.name}"></td>
+                <td>
+                    <a class="edit" title="Редагувати" data-toggle="tooltip" th:href="@{'/admin/editPublisherById='+${publisher.id}}"><i class="material-icons"></i></a>
+                    <a class="delete" title="Видалити" data-toggle="tooltip" th:href="@{'/admin/deletePublisherById='+${publisher.id}}"><i class="material-icons"></i></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+<div th:insert="blocks/footer::footer" ></div>
+</body>
+</html>
