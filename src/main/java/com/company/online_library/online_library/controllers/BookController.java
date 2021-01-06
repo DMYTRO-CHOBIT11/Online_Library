@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,11 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
-
+@Validated
 @Controller
 public class BookController {
     private IBookServices services;
@@ -51,28 +50,27 @@ public class BookController {
     private String uploadPath1;
 
     @GetMapping("/admin/addBook")
-    public String addBook(Model model){
+    public String addBook(Model model,Book book){
         Iterable<Genre>genres=genreServices.findAll();
         model.addAttribute("genres",genres);
         Iterable<Publisher>publishers= publisherServices.findAll();
         model.addAttribute("publishers",publishers);
         Iterable<Author>authors=authorServices.findAllAuthors();
         model.addAttribute("authors",authors);
+        model.addAttribute("book",book);
         return "index";
     }
-
-//    @GetMapping("/error")
-//    public List<Book> qw()throws MyException{
-//        throw new MyException("Заповніть всі поля");
-//    }
 
 
     @PostMapping(value = "/admin/addBook")
     public String addBook(@RequestParam String bookName, int isbn, int publishYear, String descr,
                           Publisher publisher, Genre genre, @RequestParam("authors") Set<Author> authors,
                           @RequestParam("image") MultipartFile image,
-                          @RequestParam("pdf")MultipartFile pdf) throws IOException{
+                          @RequestParam("pdf")MultipartFile pdf,BindingResult bindingResult) throws IOException{
 
+        if (bindingResult.hasErrors()){
+            return "addBook";
+        }
         Book newBook=new Book();
         newBook.setName(bookName);
         newBook.setDescr(descr);
@@ -136,7 +134,8 @@ public class BookController {
         model.addAttribute("find",services.findByNameContainingIgnoreCase(value));
         Iterable<Genre> genres = genreServices.findAll();
         model.addAttribute("genres", genres);
-        return "home";
+        model.addAttribute("countByValue",services.countByNameContainingIgnoreCase(value));
+        return "findBook";
     }
 
     @GetMapping("/admin/listBook")

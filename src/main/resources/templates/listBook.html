@@ -69,8 +69,8 @@
                 </td>
                 <td th:text="${b.genre}"></td>
                 <td>
-                    <a class="edit" title="Редагувати" data-toggle="tooltip" th:href="@{'/admin/editBookById='+${b.book_id}}"><i class="material-icons"></i></a>
-                    <a class="delete" title="Видалити" data-toggle="tooltip" th:href="@{'/admin/deleteBookById='+${b.book_id}}"><i class="material-icons"></i></a>
+                    <button type="button" id="btnedit" class="btn btn-info add-new"><a class="edit" title="Редагувати" data-toggle="tooltip" th:href="@{'/admin/editBookById='+${b.book_id}}">Редагувати</a></button>
+                    <button type="button" id="btndel" class="btn btn-info add-new"><a class="edit" title="Видалити" data-toggle="tooltip" th:href="@{'/admin/deleteBookById='+${b.book_id}}">Видалити</a></button>
                 </td>
             </tr>
         </table>

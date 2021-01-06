@@ -10,7 +10,6 @@ create table user (id bigint not null, email varchar(255), enabled bit not null,
 create table user_role (user_id bigint not null, roles varchar(255));
 alter table book add constraint UK_ehpdfjpu1jm3hijhj4mm0hx9h unique (isbn);
 alter table genre add constraint UK_ctffrbu4484ft8dlsa5vmqdka unique (name);
-alter table genre_books add constraint UK_bcrvi8sqyg1xlmov79f2f6acm unique (books_book_id);
 alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email);
 alter table author_book add constraint FKn8665s8lv781v4eojs8jo3jao foreign key (book_id) references book (book_id);
 alter table author_book add constraint FKg7j6ud9d32ll232o9mgo90s57 foreign key (author_id) references author (id);

@@ -88,7 +88,6 @@ public class BookServices implements IBookServices {
         return repository.countBooks();
     }
 
-
     @Override
     public Page<Book>findAllByGenre(int pageNo,int pageSize,long id,String sortField) {
         Pageable pageable=PageRequest.of(pageNo-1,pageSize,Sort.by(sortField));
@@ -108,4 +107,10 @@ public class BookServices implements IBookServices {
         return repository.countBooksByGenreId(id);
     }
 
+    @Override
+    public int countByNameContainingIgnoreCase(String value) {
+        return repository.countByNameContainingIgnoreCase(value);
+    }
+
+    
 }

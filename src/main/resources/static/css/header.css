@@ -130,7 +130,7 @@ li{
     margin-left: 265px;
     background: #919191;
     width: 1025px;
-    height: 900px;
+    height: 1000px;
 }
 .bookLinq{
     color: #050509;
@@ -193,7 +193,7 @@ li{
     display: inline;
 }
 .iconPosition{
-    margin-top: 40px;
+    margin-top: 0px;
     background: #bab9b9;
     width: 125px;
     height: 28px;
@@ -239,7 +239,7 @@ li{
     font-size: 18px;
 }
 #contentPosition{
-    margin-top: -85px;
+    margin-top: -45px;
     margin-left: 100px;
 }
 #contentPosition div{
@@ -279,4 +279,13 @@ li{
 #descr{
     margin-left: 70px;
     font-size: 15px;
+}
+.edit{
+    color: white;
+}
+#btnedit{
+    background: green;
+}
+#btndel{
+    background: red;
 }

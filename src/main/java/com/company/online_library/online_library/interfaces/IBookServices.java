@@ -17,4 +17,6 @@ public interface IBookServices {
     Page<Book> findAllByGenre(int pageNo,int pageSize, long id, String SortField);
     Page<Book>findAll(int pageNo,int pageSize,String sortField);
     int countBooksByGenreId(Long id);
+    int countByNameContainingIgnoreCase(String value);
+
 }

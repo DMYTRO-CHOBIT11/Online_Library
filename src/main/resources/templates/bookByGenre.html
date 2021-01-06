@@ -57,15 +57,15 @@
             <div th:each="b : ${booksBygenre}" class="outputBookss">
                 <div class="bookK">
                     <a class="bookLinq" th:href="@{'/readBookById='+${b.book_id}}">
-                        <div><img th:src="@{'/image/'+${b.image}}" height="175" width="125"/> </div>
-                        <strong><div id="bookName" th:text="${b.name}"></div></strong>
+                        <div><img th:src="@{'/image/'+${b.image}}" height="175" width="125"/></div>
+                        <strong><div id="bookName" th:text="${b.name}" ></div></strong>
                     </a>
                     <div id="author" th:each="a:${b.author}" th:text="${a.fio}" ></div>
+                </div>
+                <div class="iconPosition">
                     <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
-                        <div class="iconPosition">
-                            <a th:href="@{'/admin/deleteBookById='+${b.book_id}}"><img class="icoN" th:src="@{/image/delete.png}" width="15" height="20"></a>
-                            <a th:href="@{'/admin/editBookById='+${b.book_id}}"><img class="icoN" th:src="@{/image/edit.png}" width="20" height="20"></a>
-                        </div>
+                        <a th:href="@{'/admin/deleteBookById='+${b.book_id}}"><img class="icoN" th:src="@{/image/delete.png}" width="15" height="20"></a>
+                        <a th:href="@{'/admin/editBookById='+${b.book_id}}"><img class="icoN" th:src="@{/image/edit.png}" width="20" height="20"></a>
                     </div>
                 </div>
             </div>

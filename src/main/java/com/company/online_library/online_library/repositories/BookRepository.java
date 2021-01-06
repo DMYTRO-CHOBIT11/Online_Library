@@ -18,4 +18,5 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     int countBooks();
     int countBooksByGenreId(Long id);
     Page<Book> findAllByGenre(Pageable pageable, Genre genre);
+    int countByNameContainingIgnoreCase(String value);
 }

@@ -12,7 +12,7 @@
 <body id="myBody">
 <header>
     <div class="topnav">
-        <a th:href="@{'/home/page='+${currentPage}}" class="active">На головну</a>
+        <a th:href="@{'/home/page=1'}" class="active">На головну</a>
         <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
             <a th:href="@{/admin/addBook}" id="addBook">Додати книгу</a>
             <a th:href="@{/admin/listAuthors}" id="addBook">Довідник</a>
@@ -32,13 +32,13 @@
 </header>
 <div class="main">
     <div class="search">
-    <form class="example" th:action="@{/home/search}" method="get">
-        <input type="text" placeholder="Пошук.." name="value">
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-        <ul>Сортувати за:
-            <li><a th:href="@{'/home/page='+${currentPage}+'?sortedField=name'}" class="sortParam">Назвою</a></li>
-            <li><a th:href="@{'/home/page='+${currentPage}+'?sortedField=author'}" class="sortParam">Автором</a></li>
+        <form class="example" th:action="@{/home/search}" method="get">
+            <input type="text" placeholder="Пошук.." name="value">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <ul>.
+            <li><a th:href="@{'/home/page='+${currentPage}+'?sortedField=name'}" class="sortParam"></a></li>
+            <li><a th:href="@{'/home/page='+${currentPage}+'?sortedField=author.fio'}" class="sortParam"></a></li>
         </ul>
     </div>
     <div class="container1" id="g">
@@ -49,34 +49,28 @@
             </div>
         </div>
     </div>
-<div id="allBook">
-    <div id="countBook"><strong>
-        <p id="c" th:text="'Знайдено книг: '+${count}">
-        </p></strong>
-    </div>
-    <div id="bookPage">
-        <div th:each="b : ${books}" class="outputBookss">
-            <div class="bookK">
-                <a class="bookLinq" th:href="@{'/readBookById='+${b.book_id}}">
-                <div><img th:src="@{'/image/'+${b.image}}" height="175" width="125"/></div>
-                <strong><div id="bookName" th:text="${b.name}" ></div></strong>
-                </a>
-                <div id="author" th:each="a:${b.author}" th:text="${a.fio}" ></div>
+    <div id="allBook">
+        <div id="countBook"><strong>
+            <p id="c" th:text="'Знайдено книг: '+${countByValue}">
+            </p></strong>
+        </div>
+        <div id="bookPage">
+            <div th:each="b : ${find}" class="outputBookss">
+                <div class="bookK">
+                    <a class="bookLinq" th:href="@{'/readBookById='+${b.book_id}}">
+                        <div><img th:src="@{'/image/'+${b.image}}" height="175" width="125"/></div>
+                        <strong><div id="bookName" th:text="${b.name}" ></div></strong>
+                    </a>
+                    <div id="author" th:each="a:${b.author}" th:text="${a.fio}" ></div>
                 </div>
-            <div class="iconPosition">
-                <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
-                    <a th:href="@{'/admin/deleteBookById='+${b.book_id}}"><img class="icoN" th:src="@{/image/delete.png}" width="15" height="20"></a>
-                    <a th:href="@{'/admin/editBookById='+${b.book_id}}"><img class="icoN" th:src="@{/image/edit.png}" width="20" height="20"></a>
+                <div class="iconPosition">
+                    <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
+                        <a th:href="@{'/admin/deleteBookById='+${b.book_id}}"><img class="icoN" th:src="@{/image/delete.png}" width="15" height="20"></a>
+                        <a th:href="@{'/admin/editBookById='+${b.book_id}}"><img class="icoN" th:src="@{/image/edit.png}" width="20" height="20"></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <ul class="pagination" th:if = "${totalPages > 1}" id="pos">
-        <li class="page-item" th:each="i: ${#numbers.sequence(1, totalPages)}">
-            <a class="page-link" th:if="${currentPage != i}" th:href="@{'/home/page=' + ${i}}">[[${i}]]</a>
-            <span class="page-link" id="currntPage" th:unless="${currentPage != i}">[[${i}]]</span>
-        </li>
-    </ul>
     </div>
 </div>
 <div th:insert="blocks/footer::footer"></div>

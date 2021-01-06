@@ -21,7 +21,7 @@ public class Genre {
     private Long id;
     @NotBlank(message = "Введіть назву жанру")
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "genre")
     private Set<Book> books=new HashSet<>();
 
 //    public void removeGenreFromBooks(Set<Book> books){
