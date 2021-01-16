@@ -42,7 +42,7 @@
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
-                <div class="col-sm-8"><h2>Список <b>жанрів</b></h2></div>
+                <div class="col-sm-8"><h2>Список <b>видавництв</b></h2></div>
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-info add-new"><a id="linkcolor" th:href="@{/admin/addPublisher}" class="fa fa-plus">Додати видавництво</a></button>
                 </div>
@@ -62,7 +62,7 @@
                 <td th:text="${publisher.name}"></td>
                 <td>
                     <button type="button" id="btnedit" class="btn btn-info add-new"><a class="edit" title="Редагувати" data-toggle="tooltip" th:href="@{'/admin/editPublisherById='+${publisher.id}}">Редагувати</a></button>
-<!--                    <a class="delete" title="Видалити" data-toggle="tooltip" th:href="@{'/admin/deletePublisherById='+${publisher.id}}"><i class="material-icons"></i></a>-->
+                    <button type="button" id="btndel" class="btn btn-info add-new"><a class="edit" title="Редагувати" data-toggle="tooltip" th:href="@{'/admin/deletePublisherById='+${publisher.id}}">Видалити</a></button>
                 </td>
             </tr>
         </table>

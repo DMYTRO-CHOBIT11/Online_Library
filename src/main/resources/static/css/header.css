@@ -1,3 +1,6 @@
+body{
+    margin: 0;
+}
 span.multiselect-native-select {
     position: relative
 }
@@ -125,13 +128,6 @@ li{
 #linkd{
     background: white;
 }
-
-#bookPage{
-    margin-left: 265px;
-    background: #919191;
-    width: 1025px;
-    height: 1000px;
-}
 .bookLinq{
     color: #050509;
 }
@@ -239,7 +235,7 @@ li{
     font-size: 18px;
 }
 #contentPosition{
-    margin-top: -45px;
+    margin-top: -10px;
     margin-left: 100px;
 }
 #contentPosition div{
@@ -288,4 +284,74 @@ li{
 }
 #btndel{
     background: red;
+}
+
+.formSize{
+    width: 350px;
+}
+.formLeft{
+    margin-left: 200px;
+}
+.formRight{
+    margin-top: -360px;
+    margin-left: 800px;
+}
+#input{
+    margin-left: 45%;
+    margin-top: 55px;
+}
+#isbnSize{
+    width: 350px;
+}
+#nameSize{
+    width: 350px;
+}
+#pubyerSize{
+    width: 350px;
+}
+#authorSize{
+    width: 350px;
+}
+#descrSize{
+    width: 350px;
+}
+#publisherSize{
+    width: 350px;
+}
+#genreSize{
+    width: 350px;
+}
+.formRight1{
+    margin-left: 800px;
+    margin-top: -275px;
+}
+#input1{
+    margin-left: 45%;
+    margin-top: 65px;
+}
+#countBook{
+    background: #726f6f;
+    height: 44px;
+}
+#bookPage{
+    background: #919191;
+    height: 1000px;
+}
+#allBook{
+    margin-left: 20px;
+    margin-top: 24px;
+    width: 1025px;
+}
+#genremenu{
+    width: 230px;
+    margin-left: 30px;
+}
+.wrapper{
+    display: flex;
+}
+.class{
+    width: 50%
+}
+.userUpdate{
+    margin-top: 40px;
 }

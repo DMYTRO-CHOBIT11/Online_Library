@@ -1,14 +1,14 @@
 package com.company.online_library.online_library.controllers;
 
 import com.company.online_library.online_library.damain.Book;
-import com.company.online_library.online_library.damain.Genre;
 import com.company.online_library.online_library.damain.User;
 import com.company.online_library.online_library.interfaces.IBookServices;
 import com.company.online_library.online_library.interfaces.IGenreServices;
-import com.company.online_library.online_library.interfaces.IPublisherServices;
 import com.company.online_library.online_library.interfaces.IUserServices;
+import com.company.online_library.online_library.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,12 +30,17 @@ public class UserController {
     @Autowired
     private IGenreServices genreServices;
     @Autowired
-    private IPublisherServices publisherServices;
+    UserRepository repository;
 
     @GetMapping("/reg")
     public String reg(User user, Model model) {
         model.addAttribute("user",user);
         return "registration";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        return  "login";
     }
 
     @PostMapping("/reg")
@@ -55,21 +60,47 @@ public class UserController {
     public String homePage(Model model, @PathVariable("pageNo")int pageNo,
                            @RequestParam(value = "sortField",defaultValue = "name") String sortField){
         int pageSize=18;
-        Page<Book> pages = bookServices.findAll(pageNo,pageSize,sortField);
+        Page<Book> pages = bookServices.findAll(pageNo,pageSize);
         List<Book> books = pages.getContent();
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", pages.getTotalPages());
         model.addAttribute("totalItems", pages.getTotalElements());
-        model.addAttribute("books", books);
-        Iterable<Genre> genres = genreServices.findAll();
-        model.addAttribute("genres", genres);
-        model.addAttribute("count", bookServices.countBooks());
-        model.addAttribute("sortField",sortField);
+        model.addAttribute("genres", genreServices.findAll());
+        model.addAttribute("count", books.size());
+        model.addAttribute("books",bookServices.sortByParam(books,sortField));
         return "home";
     }
 
-    @GetMapping("/logout")
-    public String logout(){
-        return  "login";
+    @GetMapping("/user")
+    public String userRoom(Model model){
+        User user = services.findUserByEmail(
+                SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("user",user);
+        return "userRoom";
+    }
+
+    @GetMapping("/user/{email}/updateUsername")
+    public String updateUserUsername(@PathVariable("email")String email, Model model){
+        model.addAttribute("user",services.findUserByEmail(email));
+        return "updateUsername";
+    }
+
+    @GetMapping("/user/{email}/updatePassword")
+    public String updateUserPassword(@PathVariable("email")String email, Model model){
+        model.addAttribute("user",services.findUserByEmail(email));
+        return "updatePassword";
+    }
+
+    @PostMapping("/user/{email}/updateUsername")
+    public String updateUsername(@PathVariable("email")String email,
+                                 @RequestParam("username")String username){
+       services.updateUsername(email, username);
+        return "redirect:/user";
+    }
+    @PostMapping("/user/{email}/updatePassword")
+    public String updatePassword(@PathVariable("email")String email,
+                                 @RequestParam("password")String password){
+        services.updatePassword(email, password);
+        return "redirect:/user";
     }
 }

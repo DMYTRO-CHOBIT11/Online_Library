@@ -8,8 +8,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,7 +35,7 @@ public class Book {
 
     @NotNull(message = "Вкажіть автора книги")
     @ManyToMany(mappedBy = "bookList")
-    private Set<Author> author=new HashSet<>();
+    private Set<Author> author=new TreeSet<>();
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
@@ -61,14 +61,6 @@ public class Book {
             author.remove(a);
         }
     }
-
-//    public void removeGenre(Genre genre){
-//        genre.getBooks().remove(this);
-//    }
-//
-//    public void removePublisher(Publisher publisher){
-//        publisher.getBooks().remove(this);
-//    }
 
     public Book(@NotBlank(message = "Введіть назву книги") String name, int isbn, Genre genre, @NotNull(message = "Вкажіть автора книги") Set<Author> author, Publisher publisher, int publishYear, String descr) {
         this.name = name;

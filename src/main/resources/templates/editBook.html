@@ -29,63 +29,48 @@
     </div>
 </header>
 <div class="main">
-    <form method="post" th:action="@{'/admin/editBookById='+${editBook.book_id}}" th:object="${editBook}" enctype="multipart/form-data">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Назва</label>
-                <input type="text" class="form-control" id="inputEmail4" th:field="*{name}" th:errorClass="is-invalid">
-                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback"></span>
+    <form method="post" th:action="@{'/admin/editBookById='+${editBook.book_id}}" th:object="${editBook}">
+        <div class="formMain">
+            <div class="formLeft">
+                <div class="formSize1">
+                    <label >Назва</label>
+                    <input id="nameSize" type="text" class="form-control"  th:field="*{name}" required>
+                </div>
+                <div class="formSize1" >
+                    <label>ISBN</label>
+                    <input id="isbnSize" required type="text" class="form-control" th:field="*{isbn}" >
+                </div>
+                <div class="formSize1">
+                    <label>Рік публікації</label>
+                    <input id="pubyerSize" required type="number" class="form-control" th:field="*{publishYear}" >
+                </div>
+                <div class="formSize1">
+                    <label>Опис</label>
+                    <input id="descrSize" type="text" class="form-control" th:field="*{descr}">
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <label for="inputEmail4">Видавництво</label>
-                <select th:field="*{publisher}" th:errorClass="is-invalid" class="form-control">
-                    <option th:each="p:${publishers}" th:value="${p.id}" th:text="${p.name}"></option>
-                    <span th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}" class="invalid-feedback"></span>
-                </select>
+            <div class="formRight1">
+                <div class="formSize1">
+                    <label >Жанр</label>
+                    <select id="genreSize" required th:field="*{genre}" class="form-control">
+                        <option th:each="g : ${genres}" th:value="${g.id}" th:text="${g.name}" class="form-control"></option>
+                    </select>
+                </div>
+                <div class="formSize1">
+                    <label>Видавництво</label>
+                    <select id="publisherSize" required th:field="*{publisher}" class="form-control">
+                        <option th:each="p:${publishers}" th:value="${p.id}" th:text="${p.name}"></option>
+                    </select>
+                </div>
+                <div class="formSize1">
+                    <label >Автори</label>
+                    <select id="authorSize" required th:field="*{author}"  class="multiselect-ui form-control"  multiple="multiple">
+                        <option selected="selected" th:each="a : ${authors}" th:value="${a.id}" th:text="${a.fio}"></option>
+                    </select>
+                </div>
             </div>
         </div>
-        <div class="form-group col-md-4">
-            <label for="inputEmail4">Жанр</label>
-            <select th:field="*{genre}" th:errorClass="is-invalid" class="form-control">
-                <option th:each="g : ${genres}"  th:value="${g.id}" th:text="${g.name}"  class="form-control"></option>
-                <span th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}" class="invalid-feedback"></span>
-            </select>
-        </div>
-        <div class="form-group">
-            <div class="col-md-4">
-                <label for="inputEmail4">Автори</label>
-                <select th:field="*{author}" th:errorClass="is-invalid" id="dates-field2" class="multiselect-ui form-control"  multiple="multiple">
-                    <option th:each="a : ${authors}"  th:value="${a.id}" th:text="${a.fio}"  class="form-control">Автори</option>
-                    <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="invalid-feedback"></span>
-                </select>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>ISBN</label>
-                <input type="text" class="form-control" th:field="*{isbn}" th:errorClass="is-invalid" id="isbn">
-                <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" class="invalid-feedback"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label>Дата публікації</label>
-                <input type="number" class="form-control" th:field="*{publishYear}" id="dataPublish" th:errorClass="is-invalid">
-                <span th:if="${#fields.hasErrors('publishYear')}" th:errors="*{publishYear}" class="invalid-feedback"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label >Опис</label>
-                <input type="text" class="form-control" th:field="*{descr}" id="descr" th:errorClass="is-invalid">
-                <span th:if="${#fields.hasErrors('descr')}" th:errors="*{descr}" class="invalid-feedback"></span>
-            </div>
-<!--            <div class="form-group col-md-2">-->
-<!--                <label>Контент</label>-->
-<!--                <input type="file" class="form-control" th:field="*{content}">-->
-<!--            </div>-->
-<!--            <div class="form-group col-md-2">-->
-<!--                <label >Зображення</label>-->
-<!--                <input type="file" class="form-control" name="image">-->
-<!--            </div>-->
-        </div>
-        <input type="submit" name="submit" class="btn btn-info btn-md" value="Редагувати">
+        <input id="input1" type="submit" name="submit" class="btn btn-info btn-md" value="Редагувати">
     </form>
 </div>
 <div th:insert="blocks/footer::footer" ></div>

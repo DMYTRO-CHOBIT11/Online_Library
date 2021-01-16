@@ -9,7 +9,7 @@ public interface IAuthorServices {
     Author createAuthor(Author author);
     Optional<Author> findById(long id);
     Author updateAuthorById(Author author,long id);
-    String deleteAuthorById(long id);
+    void deleteAuthorById(long id);
     Iterable<Author>findAllAuthors();
 }
 

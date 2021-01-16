@@ -41,6 +41,11 @@
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+            <version>2.3.3.RELEASE</version>
+        </dependency>
+        <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
@@ -62,16 +67,6 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -90,10 +85,13 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.11.3</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>1.11.933</version>
+        </dependency>
+
     </dependencies>
 
     <build>

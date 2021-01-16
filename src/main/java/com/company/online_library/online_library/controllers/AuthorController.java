@@ -34,9 +34,6 @@ public class AuthorController {
 
     @PostMapping("/admin/editAuthorById={id}")
     public String update(@PathVariable("id") long id,@Valid Author author,BindingResult bindingResult) {
-//        if (author.getFio()==null){
-//            bindingResult.addError(new FieldError("editAuthor","fio","Заповніть усі форми"));
-//        }
         if(bindingResult.hasErrors()){
             return "edit";
         }

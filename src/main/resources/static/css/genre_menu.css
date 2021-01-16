@@ -1,15 +1,9 @@
-/*html, body{*/
-/*    padding:0px;*/
-/*    margin:0px;*/
-/*    font-family: 'Raleway', sans-serif;*/
-/*    height:100%;*/
-/*}*/
 
 #myBody{
     background: #6b6969;
 }
-.container1{
-    margin-top: 30px;
+#container1{
+    width: 300px;
     color: #dddddd;
     text-align: center;
     max-width:200px;
@@ -18,11 +12,7 @@
     border:1px solid #111;
     border-radius:4px;
     box-shadow:0px 4px 5px rgba(0, 0, 0, 0.75);
-    margin-left: 30px;
-}
-
-.search{
-    margin-left: 30px;
+    margin-top: 30px;
 }
 .link1{
     font-size:16px;
@@ -102,13 +92,6 @@ form.example::after {
     content: "";
     clear: both;
     display: table;
-}
-#countBook{
-    background: #726f6f;
-    margin-left: 265px;
-    margin-top: -255px;
-    height: 44px;
-    width: 1025px;
 }
 #c{
     padding-left: 15px;

@@ -34,7 +34,7 @@
     <input type="text" th:field="*{fio}" id="fio" th:errorClass="is-invalid" class="form-control" width="400">
     <span th:if="${#fields.hasErrors('fio')}" th:errors="*{fio}" class="invalid-feedback"></span></br>
     <label for="birthday" class="text-info">Дата народження</label><br>
-    <input type="date" th:field="*{birthday}" id="birthday" th:errorClass="is-invalid" class="form-control" width="500">
+    <input type="date" th:field="*{birthday}" id="birthday"  class="form-control" width="400">
     <input type="submit" value="Додати автора" class="btn btn-info btn-md">
 </form>
 </div>

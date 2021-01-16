@@ -1,5 +1,8 @@
 package com.company.online_library.online_library.controllers;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.S3Object;
 import com.company.online_library.online_library.damain.Author;
 import com.company.online_library.online_library.damain.Book;
 import com.company.online_library.online_library.damain.Genre;
@@ -24,7 +27,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 @Validated
 @Controller
@@ -33,21 +38,21 @@ public class BookController {
     private IGenreServices genreServices;
     private IPublisherServices publisherServices;
     private IAuthorServices authorServices;
+    private AmazonS3 s3client;
 
     @Autowired
     public BookController(IBookServices services, IGenreServices genreServices,
-                          IPublisherServices publisherServices, IAuthorServices authorServices) {
+                          IPublisherServices publisherServices, IAuthorServices authorServices,
+                          AmazonS3 s3client) {
         this.services = services;
         this.genreServices = genreServices;
         this.publisherServices = publisherServices;
         this.authorServices = authorServices;
+        this.s3client=s3client;
     }
 
-    @Value("${upload.path}")
-    private String uploadPath;
-
-    @Value("${upload.path1}")
-    private String uploadPath1;
+    @Value("${jsa.s3.bucket}")
+    private String s3bucket;
 
     @GetMapping("/admin/addBook")
     public String addBook(Model model,Book book){
@@ -80,32 +85,18 @@ public class BookController {
         newBook.setGenre(genre);
         newBook.setAuthor(authors);
         if (image != null && !image.getOriginalFilename().isEmpty()) {
-            File uploadDir = new File(uploadPath);
-
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
+            File uploadImage = services.convertMultiPartFileToFile(image);
             String uuidFile = UUID.randomUUID().toString();
             String resultFilename = uuidFile + "." + image.getOriginalFilename();
-
-            image.transferTo(new File(uploadPath + "/" + resultFilename));
-
+            s3client.putObject(s3bucket+"/images", resultFilename, uploadImage);
             newBook.setImage(resultFilename);
         }
 
         if (pdf != null && !pdf.getOriginalFilename().isEmpty()) {
-            File uploadDir = new File(uploadPath1);
-
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
+            File uploadPdf = services.convertMultiPartFileToFile(pdf);
             String uuidFile = UUID.randomUUID().toString();
             String resultFilename = uuidFile + "." + pdf.getOriginalFilename();
-
-            pdf.transferTo(new File(uploadPath1 + "/" + resultFilename));
-
+            s3client.putObject(s3bucket+"/pdf", resultFilename, uploadPdf);
             newBook.setContent(resultFilename);
         }
         services.createBook(newBook);
@@ -117,15 +108,15 @@ public class BookController {
     public String allBooksByGenre(@PathVariable("id") long id,@PathVariable("pageNo") int pageNo,
                                   @RequestParam(value = "sortField",defaultValue = "name")String sortField, Model model){
         int pageSize=18;
-        Page<Book>pages=services.findAllByGenre(pageNo,pageSize,id,sortField);
+        Page<Book>pages=services.findAllByGenre(pageNo,pageSize,id);
         List<Book> booksBygenre=pages.getContent();
         model.addAttribute("currentPage1", pageNo);
         model.addAttribute("totalPages1", pages.getTotalPages());
         model.addAttribute("totalItems1", pages.getTotalElements());
         model.addAttribute("booksBygenre",booksBygenre);
         model.addAttribute("genres",genreServices.findAll());
-        model.addAttribute("countByGenre",services.countBooksByGenreId(id));
-        model.addAttribute("sortField",sortField);
+        model.addAttribute("countByGenre",booksBygenre.size());
+        model.addAttribute("booksBygenre",services.sortByParam(booksBygenre,sortField));
         return "bookByGenre";
     }
 
@@ -155,7 +146,7 @@ public class BookController {
 
     @PostMapping("/admin/editBookById={id}")
     public String update(@PathVariable("id") long id,@Valid Book book,
-                         BindingResult bindingResult) throws IOException {
+                         BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
             return "editBook";
         }
@@ -171,8 +162,13 @@ public class BookController {
 
     @GetMapping("/readBookById={id}")
     public  String readBook(@PathVariable("id") long id,Model model){
-        model.addAttribute("selectedBook",services.findById(id).get());
+        Book book=services.findById(id).get();
+        model.addAttribute("selectedBook",book);
         model.addAttribute("genres",genreServices.findAll());
+        S3Object s3Object=s3client.getObject(new GetObjectRequest(s3bucket+"/images",book.getImage()));
+        S3Object s3Object1=s3client.getObject(new GetObjectRequest(s3bucket+"/pdf",book.getContent()));
+        model.addAttribute("imageURL",s3Object.getObjectContent().getHttpRequest().getURI().toString());
+        model.addAttribute("pdfURL",s3Object1.getObjectContent().getHttpRequest().getURI().toString());
         return "book";
     }
 }

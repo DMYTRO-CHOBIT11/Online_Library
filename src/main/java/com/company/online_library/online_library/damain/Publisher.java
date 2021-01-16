@@ -7,8 +7,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -23,13 +24,7 @@ public class Publisher {
     private String name;
 
     @OneToMany(mappedBy = "publisher")
-    private Set<Book> books=new HashSet<>();
-
-//    public void removePublisherFromBooks(Set<Book>books){
-//        for (Book b:books) {
-//            b.removePublisher(this);
-//        }
-//    }
+    private Set<Book> books=new TreeSet<>();
 
     @Override
     public String toString() {

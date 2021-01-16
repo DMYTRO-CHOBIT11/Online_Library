@@ -27,19 +27,28 @@ public class UserServices implements IUserServices,UserDetailsService {
     @Override
     public User createUser(User user) {
         user.setEnabled(true);
-        user.setRoles(Collections.singleton(Role.ROLE_ADMIN));
+        user.setRoles(Collections.singleton(Role.ROLE_USER));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return repository.save(user);
     }
 
     @Override
     public User findById(long id) {
-        return null;
+        return repository.findById(id).get();
     }
 
     @Override
-    public User updateUserById(long id) {
-        return null;
+    public User updateUsername(String email,String username) {
+        User updateUser=repository.findUserByEmail(email);
+        updateUser.setUsername(username);
+        return repository.save(updateUser);
+    }
+
+    @Override
+    public User updatePassword(String email,String password) {
+        User updateUser=repository.findUserByEmail(email);
+        updateUser.setPassword(bCryptPasswordEncoder.encode(password));
+        return repository.save(updateUser);
     }
 
     @Override
@@ -59,6 +68,11 @@ public class UserServices implements IUserServices,UserDetailsService {
             return false;
         }else return true;
     }
+
+//    @Override
+//    public User findUserByUsername(String username) {
+//        return repository.findUserByUsername(username);
+//    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

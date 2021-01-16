@@ -30,57 +30,57 @@
 </header>
 <div class="main">
     <form th:action="@{/admin/addBook}"  method="post" enctype="multipart/form-data">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Назва</label>
-                <input type="text" class="form-control" id="inputEmail4" name="bookName" required>
+        <div class="formMain">
+            <div class="formLeft">
+                <div class="formSize">
+                    <label >Назва</label>
+                    <input type="text" class="form-control"  name="bookName" required>
+                </div>
+                <div class="formSize" >
+                    <label>ISBN</label>
+                    <input required type="text" class="form-control" name="isbn" >
+                </div>
+                <div class="formSize">
+                    <label>Рік публікації</label>
+                    <input required type="number" class="form-control" name="publishYear" >
+                </div>
+                <div class="formSize">
+                    <label>Опис</label>
+                    <input type="text" class="form-control" name="descr">
+                </div>
+                <div class="formSize">
+                    <label>Зображення</label>
+                    <input required type="file" class="form-control" name="image">
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <label >Жанр</label>
-                <select name="genre" class="form-control">
-                    <option value="0">Жанр</option>
-                    <option required th:each="g : ${genres}" th:value="${g.id}" th:text="${g.name}" class="form-control"></option>
-                </select>
+            <div class="formRight">
+                <div class="formSize">
+                    <label >Жанр</label>
+                    <select required name="genre" class="form-control">
+                        <option value="">Жанр</option>
+                        <option th:each="g : ${genres}" th:value="${g.id}" th:text="${g.name}" class="form-control"></option>
+                    </select>
+                </div>
+                <div class="formSize">
+                    <label>Видавництво</label>
+                    <select required name="publisher" class="form-control">
+                        <option>Видавництво</option>
+                        <option th:each="p:${publishers}" th:value="${p.id}" th:text="${p.name}"></option>
+                    </select>
+                </div>
+                <div class="formSize">
+                    <label >Автори</label>
+                        <select required name="authors" id="dates-field2" class="multiselect-ui form-control"  multiple="multiple">
+                        <option selected="selected" th:each="a : ${authors}" th:value="${a.id}" th:text="${a.fio}"></option>
+                    </select>
+                </div>
+                <div class="formSize">
+                    <label>Контент</label>
+                    <input required type="file" class="form-control" name="pdf">
+                </div>
             </div>
         </div>
-        <div class="form-group col-md-4">
-            <label >Видавництво</label>
-            <select name="publisher" class="form-control">
-                <option value="0">Видавництво</option>
-                <option th:each="p:${publishers}" th:value="${p.id}" th:text="${p.name}"></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <div class="col-md-4">
-                <select name="authors" id="dates-field2" class="multiselect-ui form-control"  multiple="multiple">
-                    <option value="0">Автори</option>
-                    <option required selected="selected" th:each="a : ${authors}" th:value="${a.id}" th:text="${a.fio}"></option>
-                </select>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>ISBN</label>
-                <input required type="text" class="form-control" name="isbn" id="isbn">
-            </div>
-            <div class="form-group col-md-6">
-                <label>Рік публікації</label>
-                <input required type="number" class="form-control" name="publishYear" id="dataPublish">
-            </div>
-            <div class="form-group col-md-6">
-                <label >Опис</label>
-                <input type="text" class="form-control" name="descr" id="descr">
-            </div>
-            <div class="form-group col-md-2">
-                <label >Зображення</label>
-                <input required type="file" class="form-control" name="image">
-            </div>
-            <div class="form-group col-md-2">
-                <label>Контент</label>
-                <input required type="file" class="form-control" name="pdf">
-            </div>
-        </div>
-        <input type="submit" name="submit" class="btn btn-info btn-md" value="Додати книгу">
+        <input id="input" type="submit" name="submit" class="btn btn-info btn-md" value="Додати книгу">
     </form>
 </div>
 <div th:insert="blocks/footer::footer" ></div>

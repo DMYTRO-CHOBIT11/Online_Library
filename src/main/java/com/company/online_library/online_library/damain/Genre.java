@@ -8,8 +8,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -22,13 +23,8 @@ public class Genre {
     @NotBlank(message = "Введіть назву жанру")
     private String name;
     @OneToMany(mappedBy = "genre")
-    private Set<Book> books=new HashSet<>();
+    private Set<Book> books=new TreeSet<>();
 
-//    public void removeGenreFromBooks(Set<Book> books){
-//        for (Book b:books) {
-//            b.removeGenre(this);
-//        }
-//    }
     @Override
     public String toString() {
         return name;

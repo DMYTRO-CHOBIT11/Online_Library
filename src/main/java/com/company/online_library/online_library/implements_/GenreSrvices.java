@@ -6,8 +6,10 @@ import com.company.online_library.online_library.repositories.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GenreSrvices implements IGenreServices {
@@ -20,8 +22,10 @@ public class GenreSrvices implements IGenreServices {
     }
 
     @Override
-    public Iterable<Genre> findAll() {
-        return repository.findAll();
+    public List<Genre> findAll() {
+        List<Genre>genres=repository.findAll();
+        genres=genres.stream().sorted(Comparator.comparing(Genre::getName)).collect(Collectors.toList());
+        return genres;
     }
 
     @Override
@@ -37,8 +41,9 @@ public class GenreSrvices implements IGenreServices {
     @Override
     public void deleteGenreById(long id) {
         Genre genre=repository.findById(id).get();
-//        genre.removeGenreFromBooks(genre.getBooks());
-        repository.delete(genre);
+        if(genre.getBooks().isEmpty()){
+            repository.delete(genre);
+        }
     }
 
     @Override
@@ -47,5 +52,4 @@ public class GenreSrvices implements IGenreServices {
         newGenre.get().setName(genre.getName());
         return repository.save(newGenre.get());
     }
-
 }

@@ -42,7 +42,7 @@
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
-                <div class="col-sm-8"><h2>Список <b>жанрів</b></h2></div>
+                <div class="col-sm-8"><h2>Список <b>книг</b></h2></div>
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-info add-new"><a id="linkcolor" th:href="@{/admin/addBook}" class="fa fa-plus">Додати книгу</a></button>
                 </div>
@@ -60,7 +60,7 @@
             </thead>
             <tbody>
             <tr th:each="b : ${books}">
-                <td><div><img th:src="@{'/image/'+${b.image}}" height="90" width="65"/></div></td>
+                <td><div><img th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/images/'+${b.image}}" height="90" width="65"/></div></td>
                 <td th:text="${b.name}"></td>
                 <td>
                     <ul th:each="i : ${b.author}">

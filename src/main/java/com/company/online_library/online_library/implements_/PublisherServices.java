@@ -6,7 +6,10 @@ import com.company.online_library.online_library.repositories.PublisherRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PublisherServices implements IPublisherServices {
@@ -14,8 +17,10 @@ public class PublisherServices implements IPublisherServices {
     private PublisherRepository repository;
 
     @Override
-    public Iterable<Publisher> findAll() {
-        return repository.findAll();
+    public List<Publisher> findAll() {
+        List<Publisher>publishers=repository.findAll();
+        publishers=publishers.stream().sorted(Comparator.comparing(Publisher::getName)).collect(Collectors.toList());
+        return publishers;
     }
 
     @Override
@@ -26,8 +31,9 @@ public class PublisherServices implements IPublisherServices {
     @Override
     public void deletePublisherById(long id) {
         Publisher publisher=findById(id).get();
-//        publisher.removePublisherFromBooks(publisher.getBooks());
-        repository.delete(publisher);
+        if(publisher.getBooks().isEmpty()){
+            repository.delete(publisher);
+        }
     }
 
     @Override

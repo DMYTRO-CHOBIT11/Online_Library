@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface IGenreServices {
     List<Genre>findByNameContainingIgnoreCase(String genre);
-    Iterable<Genre>findAll();
+    List<Genre>findAll();
     Genre addGenre(Genre genre);
     Optional<Genre> findById(long id);
     void deleteGenreById(long id);

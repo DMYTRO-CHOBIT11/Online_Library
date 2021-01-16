@@ -6,8 +6,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Date;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 @Setter
 @Getter
@@ -25,7 +25,7 @@ public class Author {
     @JoinTable(name = "author_book",
             joinColumns =@JoinColumn(name = "author_id"),
             inverseJoinColumns =@JoinColumn(name = "book_id"))
-    private Set<Book> bookList=new HashSet<>();
+    private Set<Book> bookList=new TreeSet<>();
 
     public Author() {
     }
