@@ -113,12 +113,12 @@ span.multiselect-native-select select {
     color: sienna;
 }
 .outputBookss{
-    margin-left: 32px;
+    margin-left: 36px;
     padding-top: 20px;
     display: inline-block;
 }
 .bookK{
-    width: 130px;
+    width: 125px;
     height: 270px;
     background: #ffffff;
 }
@@ -191,7 +191,7 @@ li{
 .iconPosition{
     margin-top: 0px;
     background: #bab9b9;
-    width: 130px;
+    width: 125px;
     height: 28px;
     padding: 5px;
 }
@@ -200,7 +200,7 @@ li{
     float: right;
 }
 #bookName{
-    padding-left: 3px;
+    padding-left: 7px;
     padding-top: 5px;
 }
 .selectBook{
@@ -210,7 +210,7 @@ li{
 #bookView{
     text-align: center;
     margin-top: 0px;
-    margin-left: 315px;
+    margin-left: 200px;
     background: #cfcdcd;
     height:560px;
     width: 950px;
@@ -218,8 +218,8 @@ li{
 #zagolovok{
     text-align: center;
     background: #969595;
-    margin-left: 315px;
-    margin-top: -505px;
+    margin-left: 200px;
+    margin-top: -553px;
     height: 44px;
     width: 950px;
 }
@@ -254,8 +254,8 @@ li{
 #birthday{
     width: 400px;
 }
-#author{
-    padding-right: 10px;
+.author{
+    padding-right: 20px;
 }
 
 .positionAuthor{
@@ -293,7 +293,7 @@ li{
     margin-left: 200px;
 }
 .formRight{
-    margin-top: -355px;
+    margin-top: -360px;
     margin-left: 800px;
 }
 #input{
@@ -343,14 +343,12 @@ li{
     width: 1025px;
 }
 #genremenu{
-    width: 250px;
+    width: 230px;
+    margin-left: 30px;
 }
 .wrapper{
     display: flex;
 }
 .class{
     width: 50%
-}
-.userUpdate{
-    margin-top: 40px;
 }

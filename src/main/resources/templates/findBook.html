@@ -25,6 +25,7 @@
             <form th:action="@{/logout}" method="post">
                 <a th:href="@{/logout}" id="log_in">Вийти</a>
             </form>
+            <a th:href="@{/user}" id="log_in">Особистий кабінет</a>
             <a id="log_in" th:href="@{https://t.me/dmytrochobit11}">Тех. Підтримка</a>
         </div>
         <h3 id="ob">Онлайн бібліотека</h3>
@@ -32,7 +33,7 @@
 </header>
 <div class="wrapper">
 <div id="genremenu" class="class">
-    <div class="search">
+    <div id="search">
         <form class="example" th:action="@{/home/search}" method="get">
             <input type="text" placeholder="Пошук.." name="value">
             <button type="submit"><i class="fa fa-search"></i></button>
@@ -63,8 +64,8 @@
                 </div>
                 <div class="iconPosition">
                     <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
-                        <a th:href="@{'/admin/deleteBookById='+${b.book_id}}"><img class="icoN" th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/images/'+delete.png}" width="15" height="20"></a>
-                        <a th:href="@{'/admin/editBookById='+${b.book_id}}"><img class="icoN" th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/images/'+edit.png}" width="20" height="20"></a>
+                        <a th:href="@{'/admin/deleteBookById='+${b.book_id}}"><img class="icoN" th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/'+delete.png}" width="15" height="20"></a>
+                        <a th:href="@{'/admin/editBookById='+${b.book_id}}"><img class="icoN" th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/'+edit.png}" width="20" height="20"></a>
                     </div>
                 </div>
             </div>

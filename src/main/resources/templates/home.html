@@ -63,15 +63,15 @@
     <div id="bookPage">
         <div th:each="b : ${books}" class="outputBookss">
             <div class="bookK"><a class="bookLinq" th:href="@{'/readBookById='+${b.book_id}}">
-                <div><img th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/images/'+${b.image}}" height="175" width="125"/></div>
+                <div><img th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/images/'+${b.image}}" height="175" width="130"/></div>
                 <strong><div id="bookName" th:text="${b.name}" ></div></strong>
             </a>
                 <div id="author" th:each="a:${b.author}" th:text="${a.fio}" ></div>
             </div>
             <div class="iconPosition">
                 <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
-                    <a th:href="@{'/admin/deleteBookById='+${b.book_id}}"><img class="icoN" th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/images/'+delete.png}" width="15" height="20"></a>
-                    <a th:href="@{'/admin/editBookById='+${b.book_id}}"><img class="icoN" th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/images/'+edit.png}" width="20" height="20"></a>
+                    <a th:href="@{'/admin/deleteBookById='+${b.book_id}}"><img class="icoN" th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/'+delete.png}" width="15" height="20"></a>
+                    <a th:href="@{'/admin/editBookById='+${b.book_id}}"><img class="icoN" th:src="@{'https://my-online-library-bucket.s3.eu-central-1.amazonaws.com/'+edit.png}" width="20" height="20"></a>
                 </div>
             </div>
         </div>

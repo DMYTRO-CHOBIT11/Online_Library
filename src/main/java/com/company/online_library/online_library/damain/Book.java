@@ -8,8 +8,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +18,7 @@ import java.util.TreeSet;
 @Entity
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long book_id;
 
     @NotBlank(message = "Введіть назву книги")
@@ -35,7 +35,7 @@ public class Book {
 
     @NotNull(message = "Вкажіть автора книги")
     @ManyToMany(mappedBy = "bookList")
-    private Set<Author> author=new TreeSet<>();
+    private Set<Author> author=new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")

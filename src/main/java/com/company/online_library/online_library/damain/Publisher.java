@@ -7,8 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,14 +17,14 @@ import java.util.TreeSet;
 @Entity
 public class Publisher {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "Введіть назву видавництва")
     private String name;
 
     @OneToMany(mappedBy = "publisher")
-    private Set<Book> books=new TreeSet<>();
+    private Set<Book> books=new HashSet<>();
 
     @Override
     public String toString() {
