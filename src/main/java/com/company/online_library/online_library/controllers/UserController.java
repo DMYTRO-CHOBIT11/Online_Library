@@ -13,10 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -72,10 +69,13 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String userRoom(Model model){
-        User user = services.findUserByEmail(
-                SecurityContextHolder.getContext().getAuthentication().getName());
-        model.addAttribute("user",user);
+    public String userRoom(Model model) throws Exception{
+        if(true){
+            User user = services.findUserByEmail(
+                    SecurityContextHolder.getContext().getAuthentication().getName());
+            model.addAttribute("user",user);
+            throw new Exception();
+        }
         return "userRoom";
     }
 
@@ -102,5 +102,11 @@ public class UserController {
                                  @RequestParam("password")String password){
         services.updatePassword(email, password);
         return "redirect:/user";
+    }
+
+    @ExceptionHandler(Exception.class)
+    public String myException(Model model){
+        model.addAttribute("message","Поганий запрос");
+        return "error";
     }
 }

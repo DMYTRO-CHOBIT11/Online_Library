@@ -1,6 +1,5 @@
 package com.company.online_library.online_library.damain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 @Setter
 @Getter

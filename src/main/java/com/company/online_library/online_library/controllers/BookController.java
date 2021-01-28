@@ -18,10 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -69,9 +66,9 @@ public class BookController {
 
     @PostMapping(value = "/admin/addBook")
     public String addBook(@RequestParam String bookName, int isbn, int publishYear, String descr,
-                          Publisher publisher, Genre genre, @RequestParam("authors") Set<Author> authors,
-                          @RequestParam("image") MultipartFile image,
-                          @RequestParam("pdf")MultipartFile pdf,BindingResult bindingResult) throws IOException{
+                          Publisher publisher, Genre genre, @RequestParam("authors" ) Set<Author> authors,
+                          @RequestParam(required = false,name = "image") MultipartFile image,
+                          @RequestParam(required = false,name = "pdf")MultipartFile pdf,BindingResult bindingResult) throws IOException{
 
         if (bindingResult.hasErrors()){
             return "addBook";
@@ -171,4 +168,5 @@ public class BookController {
         model.addAttribute("pdfURL",s3Object1.getObjectContent().getHttpRequest().getURI().toString());
         return "book";
     }
+
 }

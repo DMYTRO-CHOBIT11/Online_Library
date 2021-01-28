@@ -13,7 +13,7 @@
 <header>
     <div class="topnav">
         <a th:href="@{/home/page=1}" class="active">На головну</a>
-        <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
+        <div sec:authorize="hasAuthority('ROLE_ADMIN')">
             <a th:href="@{/admin/addBook}" id="addBook">Додати книгу</a>
             <a th:href="@{/admin/listAuthors}" id="addBook">Довідник</a>
         </div>
@@ -25,7 +25,9 @@
             <form th:action="@{/logout}" method="post">
                 <a th:href="@{/logout}" id="log_in">Вийти</a>
             </form>
-            <a th:href="@{/user}" id="log_in">Особистий кабінет</a>
+            <div sec:authorize="hasAuthority('ROLE_USER')">
+            <a th:href="@{/user}" id="addBook">Особистий кабінет</a>
+            </div>
             <a id="log_in" th:href="@{https://t.me/dmytrochobit11}">Тех. Підтримка</a>
         </div>
         <h3 id="ob">Онлайн бібліотека</h3>

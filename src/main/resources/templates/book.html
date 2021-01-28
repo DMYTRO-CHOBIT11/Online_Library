@@ -25,6 +25,9 @@
             <form th:action="@{/logout}" method="post">
                 <a th:href="@{/logout}" id="log_in">Вийти</a>
             </form>
+            <div sec:authorize="hasAuthority('ROLE_USER')">
+                <a th:href="@{/user}" id="log_in">Особистий кабінет</a>
+            </div>
             <a id="log_in" th:href="@{https://t.me/dmytrochobit11}">Тех. Підтримка</a>
         </div>
         <h3 id="ob">Онлайн бібліотека</h3>

@@ -27,7 +27,7 @@ public class UserServices implements IUserServices,UserDetailsService {
     @Override
     public User createUser(User user) {
         user.setEnabled(true);
-        user.setRoles(Collections.singleton(Role.ROLE_ADMIN));
+        user.setRoles(Collections.singleton(Role.ROLE_USER));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return repository.save(user);
     }

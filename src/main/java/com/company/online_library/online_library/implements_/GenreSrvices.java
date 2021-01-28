@@ -43,7 +43,7 @@ public class GenreSrvices implements IGenreServices {
         Genre genre=repository.findById(id).get();
         if(genre.getBooks().isEmpty()){
             repository.delete(genre);
-        }
+        }else System.out.println("!!!!!!!!!!!!!!!!!!");
     }
 
     @Override
