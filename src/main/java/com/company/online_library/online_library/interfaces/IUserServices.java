@@ -1,7 +1,7 @@
 package com.company.online_library.online_library.interfaces;
 
 
-import com.company.online_library.online_library.damain.User;
+import com.company.online_library.online_library.domain.User;
 
 public interface IUserServices {
     User createUser(User user);

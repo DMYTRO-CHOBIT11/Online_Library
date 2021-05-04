@@ -1,7 +1,7 @@
 package com.company.online_library.online_library.implements_;
 
 import com.amazonaws.services.s3.AmazonS3;
-import com.company.online_library.online_library.damain.Book;
+import com.company.online_library.online_library.domain.Book;
 import com.company.online_library.online_library.interfaces.IBookServices;
 import com.company.online_library.online_library.repositories.BookRepository;
 import com.company.online_library.online_library.repositories.GenreRepository;

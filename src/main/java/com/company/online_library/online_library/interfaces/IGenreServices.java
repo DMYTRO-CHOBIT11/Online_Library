@@ -1,7 +1,7 @@
 package com.company.online_library.online_library.interfaces;
 
 
-import com.company.online_library.online_library.damain.Genre;
+import com.company.online_library.online_library.domain.Genre;
 
 import java.util.List;
 import java.util.Optional;

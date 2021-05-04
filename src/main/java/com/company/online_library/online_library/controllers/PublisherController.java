@@ -1,6 +1,6 @@
 package com.company.online_library.online_library.controllers;
 
-import com.company.online_library.online_library.damain.Publisher;
+import com.company.online_library.online_library.domain.Publisher;
 import com.company.online_library.online_library.interfaces.IPublisherServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

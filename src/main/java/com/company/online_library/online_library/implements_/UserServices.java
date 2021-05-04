@@ -1,7 +1,7 @@
 package com.company.online_library.online_library.implements_;
 
-import com.company.online_library.online_library.damain.Role;
-import com.company.online_library.online_library.damain.User;
+import com.company.online_library.online_library.domain.Role;
+import com.company.online_library.online_library.domain.User;
 import com.company.online_library.online_library.interfaces.IUserServices;
 import com.company.online_library.online_library.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class UserServices implements IUserServices,UserDetailsService {
     @Override
     public User createUser(User user) {
         user.setEnabled(true);
-        user.setRoles(Collections.singleton(Role.ROLE_USER));
+        user.setRoles(Collections.singleton(Role.ROLE_ADMIN));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return repository.save(user);
     }
@@ -69,10 +69,6 @@ public class UserServices implements IUserServices,UserDetailsService {
         }else return true;
     }
 
-//    @Override
-//    public User findUserByUsername(String username) {
-//        return repository.findUserByUsername(username);
-//    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

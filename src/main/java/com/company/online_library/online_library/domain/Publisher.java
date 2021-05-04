@@ -1,5 +1,4 @@
-package com.company.online_library.online_library.damain;
-
+package com.company.online_library.online_library.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,13 +15,15 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
-public class Genre {
+public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "Введіть назву жанру")
+
+    @NotBlank(message = "Введіть назву видавництва")
     private String name;
-    @OneToMany(mappedBy = "genre")
+
+    @OneToMany(mappedBy = "publisher")
     private Set<Book> books=new HashSet<>();
 
     @Override

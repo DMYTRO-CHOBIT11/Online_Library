@@ -1,6 +1,6 @@
 package com.company.online_library.online_library.interfaces;
 
-import com.company.online_library.online_library.damain.Book;
+import com.company.online_library.online_library.domain.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 

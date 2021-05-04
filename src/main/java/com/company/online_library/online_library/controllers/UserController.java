@@ -1,7 +1,7 @@
 package com.company.online_library.online_library.controllers;
 
-import com.company.online_library.online_library.damain.Book;
-import com.company.online_library.online_library.damain.User;
+import com.company.online_library.online_library.domain.Book;
+import com.company.online_library.online_library.domain.User;
 import com.company.online_library.online_library.interfaces.IBookServices;
 import com.company.online_library.online_library.interfaces.IGenreServices;
 import com.company.online_library.online_library.interfaces.IUserServices;

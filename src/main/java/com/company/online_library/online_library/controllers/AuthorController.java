@@ -1,6 +1,6 @@
 package com.company.online_library.online_library.controllers;
 
-import com.company.online_library.online_library.damain.Author;
+import com.company.online_library.online_library.domain.Author;
 import com.company.online_library.online_library.interfaces.IAuthorServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

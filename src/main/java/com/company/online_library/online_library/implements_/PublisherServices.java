@@ -1,6 +1,6 @@
 package com.company.online_library.online_library.implements_;
 
-import com.company.online_library.online_library.damain.Publisher;
+import com.company.online_library.online_library.domain.Publisher;
 import com.company.online_library.online_library.interfaces.IPublisherServices;
 import com.company.online_library.online_library.repositories.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;

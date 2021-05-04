@@ -1,8 +1,8 @@
 package com.company.online_library.online_library.repositories;
 
 
-import com.company.online_library.online_library.damain.Book;
-import com.company.online_library.online_library.damain.Genre;
+import com.company.online_library.online_library.domain.Book;
+import com.company.online_library.online_library.domain.Genre;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

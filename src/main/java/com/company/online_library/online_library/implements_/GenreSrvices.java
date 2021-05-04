@@ -1,6 +1,6 @@
 package com.company.online_library.online_library.implements_;
 
-import com.company.online_library.online_library.damain.Genre;
+import com.company.online_library.online_library.domain.Genre;
 import com.company.online_library.online_library.interfaces.IGenreServices;
 import com.company.online_library.online_library.repositories.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;

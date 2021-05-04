@@ -1,7 +1,7 @@
 package com.company.online_library.online_library.interfaces;
 
 
-import com.company.online_library.online_library.damain.Author;
+import com.company.online_library.online_library.domain.Author;
 
 import java.util.Optional;
 

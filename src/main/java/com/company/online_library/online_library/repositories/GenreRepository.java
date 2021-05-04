@@ -1,6 +1,6 @@
 package com.company.online_library.online_library.repositories;
 
-import com.company.online_library.online_library.damain.Genre;
+import com.company.online_library.online_library.domain.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.company.online_library.online_library.damain;
+package com.company.online_library.online_library.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
